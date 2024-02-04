@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Zoomscreens/login_screen.dart';
+import 'package:zoom_clone/screens/login_screen.dart';
+import 'package:zoom_clone/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,28 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: const ,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: backgroundColor
+      ),
+      home: const LoginScreen(),
+      routes: {
+        '/login': (context) => const LoginScreen()
+      },
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold();
   }
 }
