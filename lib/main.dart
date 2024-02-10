@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor
       ),
-      home: const LoginScreen(),
+      home: const Login_Screen(),
       routes: {
-        '/login': (context) => const LoginScreen()
+        '/login': (context) => const Login_Screen()
       },
     );
   }
