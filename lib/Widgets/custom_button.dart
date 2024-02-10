@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:zoom_clone/utils/colors.dart';
 
 class Custom_Button extends StatelessWidget {
   final String text;
-  const Custom_Button({super.key, required this.text});
+  final VoidCallback onpressed;
+  const Custom_Button({super.key, required this.text, required this.onpressed});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: (){}, child: Text(text, style: TextStyle(fontSize: 17),),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),);
+    return ElevatedButton(onPressed: onpressed, child: Text(text, style: TextStyle(fontSize: 17),),style: ElevatedButton.styleFrom(backgroundColor: buttonColor),);
   }
 }

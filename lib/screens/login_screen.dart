@@ -19,7 +19,8 @@ class _Login_ScreenState extends State<Login_Screen> {
         fontSize: 24, fontWeight: FontWeight.bold,
       ),),
           Image.asset('Assets/onboarding.jpg'),
-          Custom_Button(text: 'Login'),
+          Padding(padding: EdgeInsets.symmetric(vertical: 34)),
+          Custom_Button(text: 'Google Sign in', onpressed: () {  },),
         ],
       ),
     );
