@@ -30,19 +30,19 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             HomeMeetingButton(
-                onPressed: () {}, icon: Icons.video_call, text: 'New Meeting'),
+                onPressed: () {}, icon: Icons.video_call, text: 'New\n Meeting'),
             HomeMeetingButton(
                 onPressed: () {},
                 icon: Icons.add_box_outlined,
-                text: 'Join Meeting'),
+                text: 'Join \nMeeting'),
             HomeMeetingButton(
                 onPressed: () {},
                 icon: Icons.calendar_today,
-                text: 'Schedule Meeting'),
+                text: 'Schedule \nMeeting'),
             HomeMeetingButton(
                 onPressed: () {},
                 icon: Icons.arrow_upward_outlined,
-                text: 'Share Screen'),
+                text: 'Share \nScreen'),
           ],
         ),
         Expanded(

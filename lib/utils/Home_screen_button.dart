@@ -5,7 +5,11 @@ class HomeMeetingButton extends StatelessWidget {
   final VoidCallback onPressed;
   final IconData icon;
   final String text;
-  const HomeMeetingButton({super.key, required this.onPressed, required this.icon, required this.text});
+  const HomeMeetingButton(
+      {super.key,
+      required this.onPressed,
+      required this.icon,
+      required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +31,20 @@ class HomeMeetingButton extends StatelessWidget {
                 )
               ],
             ),
-            child: Icon(icon, color: Colors.white, size: 30,),
-
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
-          const SizedBox(height: 10,),
-          Text(text, style: const TextStyle(color: Colors.grey))
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            text,
+            style: const TextStyle(color: Colors.grey),
+              textAlign: TextAlign.center,
+          )
         ],
       ),
     );
