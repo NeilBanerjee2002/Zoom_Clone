@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
 import 'package:zoom_clone/utils/colors.dart';
 
 class HomeMeetingButton extends StatelessWidget {
