@@ -41,6 +41,7 @@ dependencies:
   google_sign_in: ^6.2.1
   firebase_core_dart: ^1.0.1
   jitsi_meet_wrapper: ^0.2.0+1
+  jitsi_meet_flutter_sdk: ^0.2.0
 
 
 dev_dependencies:
