@@ -17,13 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  List<Widget> pages = [
     MeetingScreen(),
-    const HistoryMeeting(),
-    const Text('Contacts'),
-    const Text('Settings'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
