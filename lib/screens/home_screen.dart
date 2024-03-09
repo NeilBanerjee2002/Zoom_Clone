@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoom_clone/screens/history_meeting_screen.dart';
 import 'package:zoom_clone/screens/meeting_screen.dart';
 import 'package:zoom_clone/utils/Home_screen_button.dart';
 
@@ -16,8 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
       _page = page;
     });
   }
-
+  List<Widget> pages = [
     MeetingScreen(),
+    const HistoryMeetingScreen(),
+    const Text('Contacts'),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
