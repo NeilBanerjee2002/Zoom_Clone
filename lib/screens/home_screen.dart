@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoom_clone/screens/meeting_screen.dart';
 import 'package:zoom_clone/utils/Home_screen_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,6 +17,13 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  List<Widget> pages = [
+    const MeetingScreen(),
+    const HistoryMeeting(),
+    const Text('Contacts'),
+    const Text('Settings'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,36 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Meet and Chat'),
         centerTitle: true,
       ),
-      body: Column(children: [
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            HomeMeetingButton(
-                onPressed: () {}, icon: Icons.video_call, text: 'New\n Meeting'),
-            HomeMeetingButton(
-                onPressed: () {},
-                icon: Icons.add_box_outlined,
-                text: 'Join \nMeeting'),
-            HomeMeetingButton(
-                onPressed: () {},
-                icon: Icons.calendar_today,
-                text: 'Schedule \nMeeting'),
-            HomeMeetingButton(
-                onPressed: () {},
-                icon: Icons.arrow_upward_outlined,
-                text: 'Share \nScreen'),
-          ],
-        ),
-        Expanded(
-          child: Center(
-            child: Text(
-              'Create or join meeting with just a click',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-          ),
-        ),
-      ]),
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.white,
           onTap: onPageChanged,
@@ -71,9 +50,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.person), label: 'Contacts'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: 'Settings'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.comment_bank_outlined), label: 'Meet and chat')
           ]),
     );
+  }
+}
+
+class HistoryMeeting extends StatelessWidget {
+  const HistoryMeeting({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      const SizedBox(height: 20),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          HomeMeetingButton(
+              onPressed: () {}, icon: Icons.video_call, text: 'New\n Meeting'),
+          HomeMeetingButton(
+              onPressed: () {},
+              icon: Icons.add_box_outlined,
+              text: 'Join \nMeeting'),
+          HomeMeetingButton(
+              onPressed: () {},
+              icon: Icons.calendar_today,
+              text: 'Schedule \nMeeting'),
+          HomeMeetingButton(
+              onPressed: () {},
+              icon: Icons.arrow_upward_outlined,
+              text: 'Share \nScreen'),
+        ],
+      ),
+      Expanded(
+        child: Center(
+          child: Text(
+            'Create or join meeting with just a click',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+        ),
+      ),
+    ]);
   }
 }
