@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
+import 'package:zoom_clone/Widgets/meeting_option.dart';
 import 'package:zoom_clone/resources/auth_methods.dart';
+import 'package:zoom_clone/resources/jitsi_meet_methods.dart';
 import 'package:zoom_clone/utils/colors.dart';
 
 class VideoScreen extends StatefulWidget {
@@ -14,16 +18,34 @@ class _VideoScreenState extends State<VideoScreen> {
   final Auth_Methods _auth_methods = Auth_Methods();
   late TextEditingController meetingIdController;
   late TextEditingController nameController;
+  final JitsiMeetMethods _jitsiMeetMethods = JitsiMeetMethods();
+
+  bool isAudioMuted = true;
+  bool isVideoMuted = true;
   @override
   void initState(){
     meetingIdController = TextEditingController();
     nameController = TextEditingController(text: _auth_methods.user.displayName);
     super.initState();
   }
-  _joinMeeting(){
-
+  void dispose(){
+    super.dispose();
+    meetingIdController.dispose();
+    nameController.dispose();
   }
-
+  _joinMeeting(){
+    _jitsiMeetMethods.createMeeting(roomName: meetingIdController.text, isAudioMuted: true, isVideoMuted: true);
+  }
+  onAudioMuted(bool val){
+    setState(() {
+      isAudioMuted = val;
+    });
+  }
+  onVideoMuted(bool val){
+    setState(() {
+      isVideoMuted = val;
+    });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +73,7 @@ class _VideoScreenState extends State<VideoScreen> {
           controller: nameController,
           maxLines: 1,
           textAlign: TextAlign.center,
-          keyboardType: TextInputType.number,
+          keyboardType: TextInputType.text,
           decoration: const InputDecoration(
               fillColor: secondaryBackgroundColor,
               filled: true,
@@ -61,13 +83,25 @@ class _VideoScreenState extends State<VideoScreen> {
           ),
         ),
         SizedBox(height: 40),
-        InkWell(
-          onTap: _joinMeeting,
-          child: const Padding(
-            padding: EdgeInsets.all(8),
-            child: Text('Join', style: TextStyle(fontSize: 16),),
+        Container(
+          height: 50,
+          width: 200,
+          child: Card(
+            color: Colors.blueAccent,
+            child: Center(
+              child: InkWell(
+                onTap: _joinMeeting,
+                child: const Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text('Join', style: TextStyle(fontSize: 16,),),
+                ),
+              ),
+            ),
           ),
-        )
+        ),
+        SizedBox(height: 30,),
+        MeetingOptions(text: "Enable Audio", isMute: true, onChanged: onAudioMuted, icon: Icon(Icons.mic),),
+        MeetingOptions(text: "Enable Video", isMute: true, onChanged: onVideoMuted, icon: Icon(Icons.video_call),),
       ],)
     );
   }
