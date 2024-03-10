@@ -101,7 +101,7 @@ class _VideoScreenState extends State<VideoScreen> {
         ),
         SizedBox(height: 30,),
         MeetingOptions(text: "Enable Audio", isMute: true, onChanged: onAudioMuted, icon: Icon(Icons.mic),),
-        MeetingOptions(text: "Enable Video", isMute: true, onChanged: onVideoMuted, icon: Icon(Icons.video_call),),
+        MeetingOptions(text: "Enable Video", isMute: true, onChanged: onVideoMuted, icon: Icon(Icons.videocam_rounded),),
       ],)
     );
   }
