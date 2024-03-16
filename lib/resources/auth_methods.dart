@@ -42,4 +42,11 @@ class Auth_Methods{
     return res;
   }
 
+  void SignOut()async{
+    try{
+      _auth.signOut();
+    }catch (e){
+      print(e);
+    }
+  }
 }

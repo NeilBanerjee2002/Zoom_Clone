@@ -19,8 +19,8 @@ class MeetingOptions extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(text, style: const TextStyle(fontSize: 16),),
           ),
-            icon, Spacer(),
-            Switch.adaptive(value: isMute, onChanged: onChanged,)
+          icon, Spacer(),
+          Switch.adaptive(value: isMute, onChanged: onChanged,)
         ],
       ),
     );
