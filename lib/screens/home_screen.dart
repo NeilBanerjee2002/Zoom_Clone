@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zoom_clone/Widgets/custom_button.dart';
 import 'package:zoom_clone/resources/auth_methods.dart';
 import 'package:zoom_clone/screens/history_meeting_screen.dart';
+import 'package:zoom_clone/screens/login_screen.dart';
 import 'package:zoom_clone/screens/meeting_screen.dart';
 import 'package:zoom_clone/utils/Home_screen_button.dart';
 
@@ -15,17 +16,29 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final Auth_Methods _auth_methods = Auth_Methods();
   int _page = 0;
+  late List<Widget> pages;
   onPageChanged(int page) {
     setState(() {
       _page = page;
     });
   }
-  List<Widget> pages = [
-    MeetingScreen(),
-    const HistoryMeetingScreen(),
-    const Text('Contacts'),
-    Custom_Button(text: "Log Out", onpressed: () => Auth_Methods().SignOut())
-  ];
+  void initState() {
+    super.initState();
+    pages = [
+      MeetingScreen(),
+      const HistoryMeetingScreen(),
+      const Text('Contacts'),
+      Custom_Button(
+          text: "Log Out",
+          onpressed: () {
+            _auth_methods.SignOut();
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => Login_Screen()),
+            );
+          }
+      )
+    ];
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
