@@ -46,6 +46,24 @@ class _VideoScreenState extends State<VideoScreen> {
       isVideoMuted = val;
     });
   }
+
+  getAudioIcon(bool val){
+    if(val){
+      return Icon(Icons.mic);
+    }
+    else{
+      return Icon(Icons.mic_off);
+    }
+  }
+
+  getVideoIcon(bool val){
+    if(val){
+      return Icon(Icons.videocam_rounded);
+    }
+    else{
+      return Icon(Icons.videocam_off);
+    }
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -100,8 +118,8 @@ class _VideoScreenState extends State<VideoScreen> {
           ),
         ),
         SizedBox(height: 30,),
-        MeetingOptions(text: "Enable Audio", isMute: true, onChanged: onAudioMuted, icon: Icon(Icons.mic),),
-        MeetingOptions(text: "Enable Video", isMute: true, onChanged: onVideoMuted, icon: Icon(Icons.videocam_rounded),),
+        MeetingOptions(text: "Enable Audio", isMute: isAudioMuted, onChanged: onAudioMuted, icon: getAudioIcon(isAudioMuted)),
+        MeetingOptions(text: "Enable Video", isMute: isVideoMuted, onChanged: onVideoMuted, icon: getVideoIcon(isVideoMuted)),
       ],)
     );
   }
