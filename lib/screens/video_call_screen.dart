@@ -72,55 +72,57 @@ class _VideoScreenState extends State<VideoScreen> {
         title: const Text('Join a meeting', style: TextStyle(fontSize: 18),),
         centerTitle: true,
       ),
-      body: Column(children: [
-        TextField(
-          controller: meetingIdController,
-          maxLines: 1,
-          textAlign: TextAlign.center,
-          keyboardType: TextInputType.number,
-          decoration: const InputDecoration(
-            fillColor: secondaryBackgroundColor,
-            filled: true,
-            hintText: 'Room ID',
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.fromLTRB(16, 6, 0, 0)
-          ),
-        ),
-        SizedBox(height: 10,),
-        TextField(
-          controller: nameController,
-          maxLines: 1,
-          textAlign: TextAlign.center,
-          keyboardType: TextInputType.text,
-          decoration: const InputDecoration(
+      body: SingleChildScrollView(
+        child: Column(children: [
+          TextField(
+            controller: meetingIdController,
+            maxLines: 1,
+            textAlign: TextAlign.center,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
               fillColor: secondaryBackgroundColor,
               filled: true,
-              hintText: 'Name',
+              hintText: 'Room ID',
               border: InputBorder.none,
               contentPadding: EdgeInsets.fromLTRB(16, 6, 0, 0)
+            ),
           ),
-        ),
-        SizedBox(height: 40),
-        Container(
-          height: 50,
-          width: 200,
-          child: Card(
-            color: Colors.blueAccent,
-            child: Center(
-              child: InkWell(
-                onTap: _joinMeeting,
-                child: const Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Text('Join', style: TextStyle(fontSize: 16,),),
+          SizedBox(height: 10,),
+          TextField(
+            controller: nameController,
+            maxLines: 1,
+            textAlign: TextAlign.center,
+            keyboardType: TextInputType.text,
+            decoration: const InputDecoration(
+                fillColor: secondaryBackgroundColor,
+                filled: true,
+                hintText: 'Name',
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.fromLTRB(16, 6, 0, 0)
+            ),
+          ),
+          SizedBox(height: 40),
+          Container(
+            height: 50,
+            width: 200,
+            child: Card(
+              color: Colors.blueAccent,
+              child: Center(
+                child: InkWell(
+                  onTap: _joinMeeting,
+                  child: const Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text('Join', style: TextStyle(fontSize: 16,),),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        SizedBox(height: 30,),
-        MeetingOptions(text: "Enable Audio", isMute: isAudioMuted, onChanged: onAudioMuted, icon: getAudioIcon(isAudioMuted)),
-        MeetingOptions(text: "Enable Video", isMute: isVideoMuted, onChanged: onVideoMuted, icon: getVideoIcon(isVideoMuted)),
-      ],)
+          SizedBox(height: 30,),
+          MeetingOptions(text: "Enable Audio", isMute: isAudioMuted, onChanged: onAudioMuted, icon: getAudioIcon(isAudioMuted)),
+          MeetingOptions(text: "Enable Video", isMute: isVideoMuted, onChanged: onVideoMuted, icon: getVideoIcon(isVideoMuted)),
+        ],),
+      )
     );
   }
 }

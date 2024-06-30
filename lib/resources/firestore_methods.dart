@@ -8,7 +8,7 @@ class FirestoreMethods {
   Stream<QuerySnapshot<Map<String, dynamic>>> get meetingsHistory => _firestore
       .collection('users')
       .doc(_auth.currentUser!.uid)
-      .collection('meetings')
+      .collection('meetings').orderBy('createdAt', descending: true)
       .snapshots();
 
   void addToMeetingHistory(String meetingName) async {
